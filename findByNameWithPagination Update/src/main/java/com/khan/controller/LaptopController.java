@@ -13,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,6 +27,7 @@ public class LaptopController {
 	@Autowired
 	LaptopRepository lRepo;
 
+	/*
 	@GetMapping("/laptopbyname/{name}")
 	public ResponseEntity<List<Laptop>> getLaptopsByName(@PathVariable String name) {
 		return new ResponseEntity<List<Laptop>>(lRepo.findByName(name), HttpStatus.OK);
@@ -39,7 +42,7 @@ public class LaptopController {
 	public ResponseEntity<List<Laptop>> getLaptopsByPrice(@PathVariable int price) {
 		return new ResponseEntity<List<Laptop>>(lRepo.findByPrice(price), HttpStatus.OK);
 	}
-
+	
 	@GetMapping("/laptops/price")
 	public ResponseEntity<Map<String, Object>> getAllLaptops(@RequestParam(required = false) String brand,
 			@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "4") int size) {
@@ -65,7 +68,13 @@ public class LaptopController {
 			return new ResponseEntity<>(response, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+		} 
+	} */
+	@RequestMapping(value = "/listPageable", method = RequestMethod.GET)
+	Page<Laptop> employeesPageable(Pageable pageable) {
+		return lRepo.findAll(pageable);
+
 	}
+	
 
 }

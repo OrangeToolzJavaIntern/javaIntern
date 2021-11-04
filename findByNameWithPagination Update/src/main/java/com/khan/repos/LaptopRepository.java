@@ -11,13 +11,13 @@ import com.khan.entity.Laptop;
 
 @Repository
 public interface LaptopRepository extends JpaRepository<Laptop, Long> {
-	
+	/*
 	List<Laptop> findByName(String name);
 	
 	List<Laptop> findByPrice(int price);
 	
 	List<Laptop> findByBrand(String brand);
 	
-	Page<Laptop> findByAllBrand(String brand, Pageable pageable);
+	Page<Laptop> findByAllBrand(String brand, Pageable pageable); */
 	
 }
